@@ -4,11 +4,19 @@ block vars
   - let pageTitle = 'Home'
 
 block page 
-  h1 test!
+  include chunk/header
 
-  //- ul.news
-  //-   each item in news
-  //-     li= item.name
-  
+  main.page
+    .main-block.block
+      .main-block__content._container
+        .main-block__text
+          h1.main-block__title.title Автошкола <br> в Санкт-петербурге
+          p.main-block__subtitle.text-content Проходите обучение как вам удобно — в группе выходного дня, по вечерам или онлайн
+          a.main-block__btn.btn(href="#") Записаться
+        .main-block__pic
+          img(src="./img/bmw-3.png", alt="BMW-3")
+      
+      .main-block__ticker.ticker
+        span.ticker__label Специальные предложения и акции
 
-  //- include chunk/footer
+  include chunk/footer

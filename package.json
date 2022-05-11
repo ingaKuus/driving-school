@@ -52,6 +52,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "custom-select": "^1.1.15",
     "gulp-autoprefixer": "^8.0.0"
   }
 }

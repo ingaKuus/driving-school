@@ -22,7 +22,7 @@ ul {
   list-style-type: none;
 }
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,p {
   margin: 0;
 }
 
@@ -40,6 +40,43 @@ button {
 ._container {
   max-width: $container-width;
   margin: 0 auto;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: calc(65/50);
+}
+
+.text-content {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(20.8/16);
+  color: #373737;
+}
+
+.ticker {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: calc(36.31/30);
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #373737;
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &__label {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: $container-width) {
+  ._container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 

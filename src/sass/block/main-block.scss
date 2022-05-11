@@ -1,0 +1,40 @@
+.main-block {
+  overflow: hidden;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 90px;
+  }
+
+  &__text {
+    flex-basis: 520px;
+    margin-top: 50px;
+    > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__pic {
+    position: relative;
+    padding: 90px 0 20px;
+
+    img {
+      position: relative;
+      z-index: 10;
+      display: block;
+      max-width: 100%;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      left: 80px;
+      right: -100vw;
+      top: 0;
+      bottom: 0;
+      background-color: $accent-color_secondary;
+      border-radius: 10px 0px 0px 0px;
+    }
+  }
+}
