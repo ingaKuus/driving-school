@@ -19,8 +19,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "browser-sync": "^2.27.9",
     "browsersync": "^0.0.1-security",
     "del": "^6.0.0",
@@ -33,7 +33,7 @@
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^8.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
@@ -48,7 +48,7 @@
     "gulp-webp": "^4.0.1",
     "gulp-webp-css": "^1.1.0",
     "gulp-webp-html": "^1.0.2",
-    "sass": "^1.51.0",
+    "sass": "^1.49.9",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
