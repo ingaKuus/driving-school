@@ -1,0 +1,48 @@
+@import './vars.scss';
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font: 600 $font-size $font-family;
+  color: $text-color;
+  background-color: $bg-color;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+h1,h2,h3,h4 {
+  margin: 0;
+}
+
+input, select, button {
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+._container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+
+
+@import './ui.scss';
+@import './block/*.scss';
