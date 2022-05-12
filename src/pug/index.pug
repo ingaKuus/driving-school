@@ -20,4 +20,43 @@ block page
         .ticker__labels
           span.ticker__label Специальные предложения и акции
 
+    .filial-block.block
+      .filial-block__content._container
+        .filial-block__text
+          h2.filial-block__title.title Наши филиалы
+        
+        .filial-block__addresses
+          .filial-block__addresses-header
+            h3.filial-block__addresses-title.btn.btn_secondary.tab.tab_active(openBlock="addresses-list_classes") Учебные классы
+            h3.filial-block__addresses-title.btn.btn_secondary.tab(openBlock="addresses-list_autodrom") Автодром
+
+          .filial-block__addresses-lists
+            ul.active#addresses-list_classes
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Пр.Первый, 31-1
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Ул.Вторая, 5-1
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Пр.Третий, 11-1
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Ул.Четвертая, 22-1
+
+            ul#addresses-list_autodrom
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Ул.Третья, д.119
+              li.filial-block__address
+                .filial-block__address-icon
+                  <i class="fa-solid fa-location-dot"></i>
+                .filial-block__address-text Ул.Четвертая, д.14
+
   include chunk/footer

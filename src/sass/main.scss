@@ -42,6 +42,10 @@ button {
   margin: 0 auto;
 }
 
+.block {
+  padding: 70px 0 150px;
+}
+
 .title {
   font-size: 50px;
   font-weight: 700;
@@ -80,6 +84,16 @@ button {
   ._container {
     padding-left: 10px;
     padding-right: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  
+}
+
+@media (max-width: 992px) {
+  .block {
+    padding-top: 50px;
   }
 }
 

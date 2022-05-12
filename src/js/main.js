@@ -5,6 +5,13 @@ Array.from(document.getElementsByClassName('ticker')).forEach(ticker => {
   }
 })
 
+const filialBlockAddresses = document.querySelector('.filial-block__addresses');
+filialBlockAddresses.querySelectorAll('.tab').forEach(tab => {
+  tab.onclick = () => {
+    changeTab(tab, filialBlockAddresses);
+  }
+});
+
 function startTicker(ticker, speed, isOnResize) {
   const tickerLabelBlock = ticker.querySelector('.ticker__labels')
   const tickerLabel = ticker.querySelector('.ticker__label');
@@ -29,4 +36,22 @@ function startTicker(ticker, speed, isOnResize) {
       i++;
     }, 50/speed)
   }
+}
+
+function changeTab(tab, parentBlock) {
+  if (tab.classList.contains('tab_active')) {
+    return;
+  }
+
+  const blockId = tab.getAttribute('openBlock');
+  const newBlock = document.getElementById(blockId);
+  const prevBlock = parentBlock.querySelector('.active');
+  const prevTab = parentBlock.querySelector('.tab_active');
+
+  console.log(prevBlock, prevTab);
+  newBlock.classList.add('active');
+  prevBlock.classList.remove('active');
+
+  tab.classList.add('tab_active')
+  prevTab.classList.remove('tab_active');
 }

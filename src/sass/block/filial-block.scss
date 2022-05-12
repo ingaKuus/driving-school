@@ -1,0 +1,63 @@
+.filial-block {
+  &__title {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  &__addresses {
+    display: flex;
+    flex-flow: column;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 70px 80px;
+
+    &-header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    &-title {
+      width: 220px;
+      background-color: #fff;
+      color: #000;
+      text-align: center;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.tab_active {
+        background-color: $accent-color_secondary;
+        color: #fff;
+      }
+    }
+
+    &-lists {
+      > ul {
+        display: none;
+        justify-content: space-around;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: calc(26/20);
+        text-align: center;
+
+        &.active {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &__address {
+    &-icon {
+      font-size: 34px;
+      color: $accent-color;
+      margin-bottom: 6px;
+    }
+  }
+}
