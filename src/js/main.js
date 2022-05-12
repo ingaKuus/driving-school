@@ -10,7 +10,7 @@ function startTicker(ticker, speed, isOnResize) {
   const tickerLabel = ticker.querySelector('.ticker__label');
   tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));
 
-  const labelsMaxNum = window.innerWidth / tickerLabelW;
+  const labelsMaxNum = window.innerWidth / tickerLabelW + 1;
   const labelsCurNum = tickerLabelBlock.children.length;
   if (labelsCurNum < labelsMaxNum) {
     for (let i = 0; i <= labelsMaxNum - labelsCurNum; i++) {
