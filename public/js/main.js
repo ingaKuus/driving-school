@@ -15,7 +15,7 @@
   \************************/
 /***/ (function() {
 
-eval("// function startTicker(ticker, speed) {\r\n//   const tickerLabel = ticker.querySelector('.ticker__label');\r\n//   tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));\r\n\r\n//   for (let i = 0; i < window.innerWidth / tickerLabelW; i++) {\r\n//     const newLabel = tickerLabel.cloneNode(true);\r\n//     ticker.appendChild(newLabel);\r\n//   }\r\n\r\n//   Array.from(ticker.children).forEach(label => {\r\n//     label.style.WebkitTransition = `transform ${10/speed}s`\r\n//     label.style.MozTransition = `transform ${10/speed}s`\r\n//     label.style.transform = `translate(${-label.clientWidth}px, 0)`;\r\n//   });\r\n// }\r\n\r\n// startTicker(document.querySelector('.ticker'), 5);\n\n//# sourceURL=webpack://gulp-starter/./src/js/main.js?");
+eval("Array.from(document.getElementsByClassName('ticker')).forEach(ticker => {\r\n  startTicker(ticker, 5)\r\n})\r\n\r\nfunction startTicker(ticker, speed) {\r\n  const tickerLabel = ticker.querySelector('.ticker__label');\r\n  tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));\r\n\r\n  for (let i = 0; i < window.innerWidth / tickerLabelW; i++) {\r\n    const newLabel = tickerLabel.cloneNode(true);\r\n    ticker.appendChild(newLabel);\r\n  }\r\n\r\n  Array.from(ticker.children).forEach(label => {\r\n    let i = 0;\r\n    setInterval(() => {\r\n      if (i >= tickerLabelW) {\r\n        i = 0;\r\n      }\r\n      label.style.left = `-${i}px`;\r\n      i++;\r\n    }, 50/speed)\r\n  })\r\n}\n\n//# sourceURL=webpack://gulp-starter/./src/js/main.js?");
 
 /***/ })
 

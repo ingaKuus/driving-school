@@ -1,17 +1,24 @@
-// function startTicker(ticker, speed) {
-//   const tickerLabel = ticker.querySelector('.ticker__label');
-//   tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));
+Array.from(document.getElementsByClassName('ticker')).forEach(ticker => {
+  startTicker(ticker, 5)
+})
 
-//   for (let i = 0; i < window.innerWidth / tickerLabelW; i++) {
-//     const newLabel = tickerLabel.cloneNode(true);
-//     ticker.appendChild(newLabel);
-//   }
+function startTicker(ticker, speed) {
+  const tickerLabel = ticker.querySelector('.ticker__label');
+  tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));
 
-//   Array.from(ticker.children).forEach(label => {
-//     label.style.WebkitTransition = `transform ${10/speed}s`
-//     label.style.MozTransition = `transform ${10/speed}s`
-//     label.style.transform = `translate(${-label.clientWidth}px, 0)`;
-//   });
-// }
+  for (let i = 0; i < window.innerWidth / tickerLabelW; i++) {
+    const newLabel = tickerLabel.cloneNode(true);
+    ticker.appendChild(newLabel);
+  }
 
-// startTicker(document.querySelector('.ticker'), 5);
+  Array.from(ticker.children).forEach(label => {
+    let i = 0;
+    setInterval(() => {
+      if (i >= tickerLabelW) {
+        i = 0;
+      }
+      label.style.left = `-${i}px`;
+      i++;
+    }, 50/speed)
+  })
+}

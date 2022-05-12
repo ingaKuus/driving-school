@@ -67,6 +67,7 @@ button {
   white-space: nowrap;
 
   &__label {
+    position: relative;
     display: inline-block;
     margin-right: 20px;
   }
