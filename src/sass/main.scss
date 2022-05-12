@@ -63,8 +63,11 @@ button {
   color: #fff;
   background-color: #373737;
   padding: 20px 0;
-  overflow: hidden;
-  white-space: nowrap;
+
+  &__labels {
+    position: relative;
+    white-space: nowrap;
+  }
 
   &__label {
     position: relative;
