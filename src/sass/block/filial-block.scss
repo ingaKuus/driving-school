@@ -14,17 +14,21 @@
     &-header {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-bottom: 50px;
     }
 
     &-title {
-      width: 220px;
+      flex-basis: 220px;
+      height: inherit;
       background-color: #fff;
       color: #000;
       text-align: center;
       cursor: pointer;
-      &:not(:last-child) {
-        margin-right: 30px;
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0;
       }
 
       &:hover {
@@ -41,6 +45,7 @@
       > ul {
         display: none;
         justify-content: space-around;
+        flex-wrap: wrap;
         font-size: 20px;
         font-weight: 700;
         line-height: calc(26/20);
@@ -54,10 +59,59 @@
   }
 
   &__address {
+    margin: 0 18px 10px;
     &-icon {
       font-size: 34px;
       color: $accent-color;
       margin-bottom: 6px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__title {
+      margin-bottom: 50px;
+    }
+
+    &__addresses {
+      padding: 40px 50px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__title {
+      margin-bottom: 35px;
+    }
+    
+    &__content {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    &__addresses {
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 0;
+      
+      &-lists {
+        > ul {
+          flex-flow: column;
+
+          > li {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      &-header {
+        align-items: stretch;
+        vertical-align: middle;
+      }
+
+      &-title {
+        flex-basis: 50%;
+        border-radius: 0;
+        margin-right: 0;
+      }
     }
   }
 }
