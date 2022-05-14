@@ -1,0 +1,144 @@
+.instructors-block {
+  display: flex;
+  justify-content: center;
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+
+    &-text {
+      display: flex;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+      max-width: 50%;
+      padding-left: 200px;
+
+      &-header {
+        display: flex;
+        flex-basis: 100%;
+      }
+    }
+
+    &-items {
+      display: flex;
+      flex-basis: 60%;
+    }
+
+    &-control-panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      margin-right: 45px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: -40px;
+        bottom: 0;
+        left: 0;
+        right: 30px;
+        background-color: #f7f7f7;
+      }
+    }
+
+    &-item-num {
+      flex-basis: 200px;
+      font-size: 20px;
+      font-weight: 700;
+
+      > .cur {
+        position: relative;
+        top: 0.1em;
+        font-size: 30px;
+        color: $accent-color;
+      }
+
+      > .max {
+        &::before {
+          content: '/';
+        }
+      }
+    }
+  }
+
+  &__title, &__item-info {
+    padding: 40px 20px;
+  }
+  &__title {
+    position: relative;
+    flex-basis: 60%;
+    color: #fff;
+    padding-left: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: -100vw;
+      background-color: $accent-color_secondary;
+    }
+  }
+  &__item-info {
+    flex-basis: 40%;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+
+  &__item-title {
+    margin-bottom: 20px;
+  }
+  &__item-subtitle {
+    color: #373737;
+
+    > * {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__subtitle {
+    flex-basis: 100%;
+    margin-top: 70px;
+    padding-right: 30px;
+  }
+
+  &__items_not-active {
+    display: flex;
+    padding: 0 29px;
+  }
+
+  &__item, &__item_active {
+    overflow: hidden;
+    border-radius: 10px;
+    img {
+      display: block;
+    }
+  }
+
+  &__item {
+    position: relative;
+    width: 190px;
+    height: 200px;
+    margin-right: 29px;
+
+    &.active {
+      position: absolute;
+      visibility: hidden;
+    }
+  }
+
+  &__item-active-container {
+    position: relative;
+    width: 300px;
+    height: 395px;
+    border-radius: 0 10px 10px 10px;
+    overflow: hidden;
+  }
+}

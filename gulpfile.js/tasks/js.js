@@ -8,6 +8,7 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const babel = require('gulp-babel');
 const webpack = require('webpack-stream');
+const browserSync = require('browser-sync');
 
 // Обработка JS
 const js = () => {

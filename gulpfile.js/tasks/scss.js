@@ -16,6 +16,7 @@ const sass = require('gulp-sass')(require('sass'))
 const sassGlob = require('gulp-sass-glob')
 const webpCss = require('gulp-webp-css')
 const gulpif = require('gulp-if');
+const browserSync = require('browser-sync');
 
 // Обработка SCSS
 const scss = () => {
@@ -40,6 +41,7 @@ const scss = () => {
       .pipe(csso())
       .pipe(size({ title: "style.min.css" }))
       .pipe(dest(path.scss.dest, { sourcemaps: app.isDev }))
+      .pipe(browserSync.stream())
 }
 
 module.exports = scss;

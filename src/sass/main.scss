@@ -59,6 +59,14 @@ button {
   color: #373737;
 }
 
+
+._center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .ticker {
   font-size: 30px;
   font-weight: 700;
@@ -77,6 +85,35 @@ button {
     position: relative;
     display: inline-block;
     margin-right: 20px;
+  }
+}
+
+.slider {
+  &__btns {
+    position: relative;
+    display: flex;
+  }
+  &__btn-prev, &__btn-next {
+    font-size: 55px;
+    cursor: pointer;
+
+    transition: color .3s ease;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &__btn-prev {
+    margin-right: 20px;
+
+    &::before {
+      content: '\27F5';
+    }
+  }
+  &__btn-next {
+    &::before {
+      content: '\27F6';
+    }
   }
 }
 

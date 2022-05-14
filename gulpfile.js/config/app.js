@@ -12,7 +12,7 @@ module.exports = {
   pug: {
     pretty: isDev,
     data: {
-        // news: require('../data/news.json')
+        instructors: require('../data/instructors.json')
     }
   },
 

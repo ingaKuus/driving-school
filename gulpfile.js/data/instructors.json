@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Любимов Игорь Юрьевич",
+    "info": {
+      "exp_driving": "с 1996 г.",
+      "exp_instructor": "с 2002 г."
+    },
+    "pic": "instructor-1.jpg"
+  },
+  {
+    "name": "Любимов Игорь Юрьевич_2",
+    "info": {
+      "exp_driving": "с 1996 г._2",
+      "exp_instructor": "с 2002 г._2"
+    },
+    "pic": "instructor-2.jpg"
+  },
+  {
+    "name": "Любимов Игорь Юрьевич_3",
+    "info": {
+      "exp_driving": "с 1996 г._3",
+      "exp_instructor": "с 2002 г._3"
+    },
+    "pic": "instructor-3.jpg"
+  },
+  {
+    "name": "Любимов Игорь Юрьевич_4",
+    "info": {
+      "exp_driving": "с 1996 г._4",
+      "exp_instructor": "с 2002 г._4"
+    },
+    "pic": "instructor-4.jpg"
+  }
+]

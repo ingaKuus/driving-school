@@ -59,4 +59,45 @@ block page
                   <i class="fa-solid fa-location-dot"></i>
                 .filial-block__address-text Ул.Четвертая, д.14
 
+    .instructors-block.block
+      .instructors-block__slider.slider
+        .instructors-block__slider-text
+          .instructors-block__slider-text-header
+            h2.instructors-block__title.title Наши инструкторы
+            .instructors-block__item-info
+              h3.instructors-block__item-title Любимов Игорь Юрьевич
+              .instructors-block__item-subtitle
+                .instructors-block__item-exp-driving Стаж вождения 
+                  span с 1996 г.
+                .instructors-block__item-exp-instructor Инструктор 
+                  span с 2002 г.
+          p.instructors-block__subtitle.text-content Каждый инструктор имеет свидетельство, предоставляющее право на обучение вождению автотранспортными средствами. Все инструкторы проходят повышение квалификации по программе «Преподаватель автомобильной школы по обучению практике управления автотранспортным средством»
+
+        .instructors-block__slider-items
+          .instructors-block__item-active-container.slider__item-active-container
+            img._center(src="./img/instructor-1.jpg", alt="Любимов")
+          .instructors-block__slider-body
+            .instructors-block__items_not-active
+              .instructors-block__item.slider__item.active
+                img._center(src="./img/instructor-1.jpg", alt="Любимов")
+              .instructors-block__item.slider__item
+                img._center(src="./img/instructor-2.jpg", alt="2")
+              .instructors-block__item.slider__item
+                img._center(src="./img/instructor-3.jpg", alt="3")
+              .instructors-block__item.slider__item
+                img._center(src="./img/instructor-4.jpg", alt="4")
+            .instructors-block__slider-control-panel
+              .instructors-block__slider-item-num 
+                span.cur 1
+                span.max 4
+              .instructors-block__slider-btns.slider__btns
+                .instructors-block__slider-btn_prev.slider__btn-prev
+                .instructors-block__slider-btn_next.slider__btn-next
+              
+
+
+
+
+
+
   include chunk/footer
