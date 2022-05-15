@@ -147,8 +147,6 @@ function moveSliderListener(slider, middleware) {
         func(btns[0]);
       })
     }
-
-    console.log(activeItemNum);
   }
 }
 

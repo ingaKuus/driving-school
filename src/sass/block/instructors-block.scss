@@ -107,6 +107,10 @@
     flex-basis: 100%;
     margin-top: 70px;
     padding-right: 30px;
+
+    &.mobile {
+      display: none;
+    }
   }
 
   &__items_not-active {
@@ -129,8 +133,7 @@
     margin-right: 29px;
 
     &.active {
-      position: absolute;
-      visibility: hidden;
+      display: none;
     }
   }
 
@@ -140,5 +143,137 @@
     height: 395px;
     border-radius: 0 10px 10px 10px;
     overflow: hidden;
+  }
+
+  @media (max-width: 1800px) {
+    &__slider {
+      &-text {
+        flex-basis: content;
+        flex-direction: column;
+      }
+      &-text-header {
+        flex-basis: content;
+        flex-direction: column;
+      }
+      &-items {
+        flex-direction: column;
+      }
+
+    }
+    &__title, &__item-info {
+      flex-basis: content;
+    }
+    &__subtitle {
+      flex-basis: content;
+    }
+    &__items {
+      &_not-active {
+        padding-left: 0;
+      }
+    }
+    &__item-active-container {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: $container-width) {
+    &__items_not-active {
+      display: none;
+    }
+    &__item-active-container {
+      border-radius: 0;
+    }
+
+    &__subtitle {
+      margin-top: 50px;
+    }
+
+    &__slider-control-panel {
+      top: -40px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__slider {
+      flex-direction: column;
+
+      &-text {
+        max-width: none;
+        flex-basis: 100%;
+        padding: 0 10px;
+      }
+
+      &-items {
+        align-items: center;
+      }
+
+      &-control-panel {
+        margin-right: 0;
+
+        > * {
+          margin-right: 30px;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &::before {
+          right: -50px;
+          left: -50px;
+        }
+      }
+    }
+    &__item-info {
+      width: 400px;
+      border-radius: 0 0 10px 10px;
+      margin: 0 auto;
+    }
+
+    &__title {
+      text-align: center;
+    }
+    &__subtitle {
+      display: none;
+      text-align: center;
+      padding: 0 10px;
+      margin: 0 auto;
+
+      &.mobile {
+        display: block;
+      }
+    }
+  }
+  @media (max-width: 600px) {
+    &__title {
+      padding: 20px 10px;
+    }
+    &__item-info {
+      width: 320px;
+      border-radius: 0;
+    }
+    &__item-active-container {
+      width: 320px;
+    }
+
+    &__slider {
+      &-text {
+        padding: 0;
+      }
+      &-body {
+        width: 100%;
+      }
+      &-control-panel {
+        justify-content: center;
+        padding: 20px;
+        &::before {
+          right: 0;
+          left: 0;
+          width: 100%;
+        }
+      }
+      &-item-num {
+        flex-basis: content;
+      }
+    }
   }
 }
