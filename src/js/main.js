@@ -24,6 +24,53 @@ window.onload = () => {
 }
 
 
+// Активация слайдеров
+Array.from(document.querySelectorAll('.slider')).forEach(slider => {
+  const middleware = [];
+  if (slider.classList.contains('instructors-block__slider')) {
+    middleware.push(setActiveContent, centerItemImg)
+
+    function centerItemImg() {
+      const img = slider.querySelector('.instructors-block__slider img');
+      centerImg(img);
+    }
+  
+    function setActiveContent(btn) {
+      const data = require('../../gulpfile.js/data/instructors.json');
+      const container = slider.querySelector('.instructors-block__item-info')
+      const title = container.querySelector('.instructors-block__item-title')
+      const subtitleDriving = container.querySelector('.instructors-block__item-exp-driving')
+      const subtitleInstructor = container.querySelector('.instructors-block__item-exp-instructor')
+      const itemNum = btn.getAttribute('activeItemNum');
+
+  
+      title.innerHTML = data[itemNum].name;
+      subtitleDriving.querySelector('span').innerHTML = data[itemNum].info.exp_driving
+      subtitleInstructor.querySelector('span').innerHTML = data[itemNum].info.exp_instructor;
+
+      const curItemNumBlock = slider.querySelector('.instructors-block__slider-item-num .cur');
+      curItemNumBlock.innerHTML = Number(itemNum)+1;
+    }
+  }
+
+  if (slider.classList.contains('faq-block__slider')) {
+    middleware.push(closeItems);
+    
+    function closeItems() {
+      const openedItems = slider.querySelectorAll('.open')
+      Array.from(openedItems).forEach(item => {
+        item.classList.remove('open');
+      })
+    }
+  }
+
+  moveSliderListener(slider, middleware);
+})
+
+Array.from(document.querySelectorAll('.unfold')).forEach(item => {
+  unfoldItem(item);
+})
+
 
 //-------------Functions
 
@@ -91,6 +138,9 @@ function centerImg(img) {
 function moveSliderListener(slider, middleware) {
   const prevBtn = slider.querySelector('.slider__btn-prev')
   const nextBtn = slider.querySelector('.slider__btn-next')
+  if (!slider.querySelector('.slider__item.active')) {
+    slider.querySelector('.slider__item').classList.add('active');
+  }
 
   prevBtn.onclick = () => {
     btnListener([prevBtn, nextBtn], false)
@@ -112,20 +162,16 @@ function moveSliderListener(slider, middleware) {
     let newItem;
 
     if (isForward) {
-      if (activeItem.nextElementSibling) {
-        newItem = activeItem.nextElementSibling;
-        activeItemNum++
+      if (activeItemNum < items.length-1) {
+        newItem = items[++activeItemNum];
       } else {
-        newItem = items[0]
-        activeItemNum = 0;
+        newItem = items[activeItemNum = 0]
       }
     } else {
-      if (activeItem.previousElementSibling) {
-        newItem = activeItem.previousElementSibling;
-        activeItemNum--;
+      if (activeItemNum > 0) {
+        newItem = items[--activeItemNum];
       } else {
-        newItem = items[items.length-1];
-        activeItemNum = items.length-1;
+        newItem = items[activeItemNum = items.length-1];
       }
     }
 
@@ -150,33 +196,10 @@ function moveSliderListener(slider, middleware) {
   }
 }
 
-Array.from(document.querySelectorAll('.slider')).forEach(slider => {
-  const middleware = [];
-  if (slider.classList.contains('instructors-block__slider')) {
-    middleware.push(setActiveContent, centerItemImg)
+function unfoldItem(item) {
+  const btn = item.querySelector('.unfold__btn')
 
-    function centerItemImg() {
-      const img = slider.querySelector('.instructors-block__slider img');
-      centerImg(img);
-    }
-  
-    function setActiveContent(btn) {
-      const data = require('../../gulpfile.js/data/instructors.json');
-      const container = slider.querySelector('.instructors-block__item-info')
-      const title = container.querySelector('.instructors-block__item-title')
-      const subtitleDriving = container.querySelector('.instructors-block__item-exp-driving')
-      const subtitleInstructor = container.querySelector('.instructors-block__item-exp-instructor')
-      const itemNum = btn.getAttribute('activeItemNum');
-
-  
-      title.innerHTML = data[itemNum].name;
-      subtitleDriving.querySelector('span').innerHTML = data[itemNum].info.exp_driving
-      subtitleInstructor.querySelector('span').innerHTML = data[itemNum].info.exp_instructor;
-
-      const curItemNumBlock = slider.querySelector('.instructors-block__slider-item-num .cur');
-      curItemNumBlock.innerHTML = Number(itemNum)+1;
-    }
+  btn.onclick = () => {
+    item.classList.toggle('open');
   }
-
-  moveSliderListener(slider, middleware);
-})
+}

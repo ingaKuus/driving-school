@@ -12,7 +12,8 @@ module.exports = {
   pug: {
     pretty: isDev,
     data: {
-        instructors: require('../data/instructors.json')
+        instructors: require('../data/instructors.json'),
+        faq: require('../data/faq.json')
     }
   },
 

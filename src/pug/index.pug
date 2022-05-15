@@ -91,10 +91,35 @@ block page
                 span.cur 1
                 span.max 4
               .instructors-block__slider-btns.slider__btns
-                .instructors-block__slider-btn_prev.slider__btn-prev
-                .instructors-block__slider-btn_next.slider__btn-next
+                .instructors-block__slider-btn-prev.slider__btn-prev
+                .instructors-block__slider-btn-next.slider__btn-next
           
         p.instructors-block__subtitle.text-content.mobile Каждый инструктор имеет свидетельство, предоставляющее право на обучение вождению автотранспортными средствами. Все инструкторы проходят повышение квалификации по программе «Преподаватель автомобильной школы по обучению практике управления автотранспортным средством»
+
+    .faq-block.block
+      .faq-block__content._container
+        .faq-block__title-block
+          h2.faq-block__title.title Часто <br> задаваемые <br> вопросы
+          .faq-block__pic
+            img(src="./img/volkswagen-jetta.png", alt="Volkswagen Jetta")
+
+        .faq-block__slider.slider
+          - for (let i = 0; i < faq.length / 5; i++)
+            ul.faq-block__question-list.slider__item
+              - for (let j = i*5; j < 5 + 5*i; j++)
+                - const item = faq[j];
+                - if (!item) break;
+                li.unfold
+                  .faq-block__question.unfold__btn
+                    span= item.q
+                    <i class="fa-solid fa-angle-down angle-down-icon"></i>
+                    <i class="fa-solid fa-xmark xmark-icon"></i>
+                  .faq-block__answer.text-content.unfold__content= item.a
+
+          .faq-block__slider-btns.slider__btns
+            .faq-block__slider-btn-prev.slider__btn-prev
+            .faq-block__slider-btn-next.slider__btn-next
+
 
 
 
