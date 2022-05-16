@@ -98,9 +98,9 @@ block page
 
     .faq-block.block
       .faq-block__content._container
-        .faq-block__title-block
-          h2.faq-block__title.title Часто <br> задаваемые <br> вопросы
-          .faq-block__pic
+        .faq-block__title-block.title-block
+          h2.faq-block__title.title-block__title.title Часто <br> задаваемые <br> вопросы
+          .faq-block__pic.title-block__pic
             img(src="./img/volkswagen-jetta.png", alt="Volkswagen Jetta")
 
         .faq-block__slider.slider
@@ -120,7 +120,31 @@ block page
             .faq-block__slider-btn-prev.slider__btn-prev
             .faq-block__slider-btn-next.slider__btn-next
 
+    .map-block.block
 
+    .contact-us-block.block
+      .contact-us-block__content._container
+        .contact-us-block__title-block.title-block
+            h2.contact-us-block__title.title-block__title.title Свяжитесь с нами!
+            .contact-us-block__pic.title-block__pic
+              img(src="./img/kia-sportage.png", alt="KIA Sportage")
+
+        form(action="post").contact-us-block__form.contact-form
+          h3.contact-form__title.title_small Оставьте свои контактные данные
+          .contact-form__content
+            .contact-form__field
+              input(type="text" name="name" placeholder="Имя")
+            .contact-form__field
+              input(type="text" name="phone_number" placeholder="Телефон")
+            .contact-form__field.checkbox
+              label
+                input(type="checkbox" name="isAgree")
+                span Я согласен с 
+                  a(href="#") политикой конфиденциальности
+            .contact-form__field.submit-btn
+              button.btn(type="submit") Отправить заявку
+            
+  include chunk/footer
 
 
 

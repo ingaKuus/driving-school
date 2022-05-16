@@ -2,31 +2,6 @@
   &__content {
     display: flex;
   }
-  &__title-block {
-    position: relative;
-    padding: 70px 10px;
-
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      left: -100vw;
-      right: -100px;
-      top: 0;
-      bottom: 0;
-      background-color: $accent-color_secondary;
-    }
-  }
-  &__title {
-    color: #fff;
-    margin: 0 70px 82px 0;
-  }
-  &__pic {
-    position: relative;
-    right: 300px;
-    width: 0;
-    height: 100%;
-  }
 
   &__question-list {
     display: none;
@@ -135,6 +110,7 @@
 
   @media (max-width: 600px) {
     &__title-block {
+      justify-content: center;
       padding: 20px 10px;
     }
     &__title {
