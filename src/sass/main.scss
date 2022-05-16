@@ -66,6 +66,68 @@ button {
   color: #373737;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+
+  > li {
+    margin: 0 37px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__link {
+    display: inline-block;
+    padding: 20px 0;
+
+    transition: color .2s ease;
+    &:hover {
+      color: $accent-color_secondary;
+    }
+  }
+}
+
+.social-media {
+  display: flex;
+  font-size: 30px;
+  > li {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $accent-color_secondary;
+    
+    transition: color .2s ease;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.phone-number {
+  font-weight: 700;
+  line-height: calc(19.36/16);
+
+  > span {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  > i {
+    margin-right: 20px;
+  }
+}
 
 ._center {
   position: absolute;
@@ -200,6 +262,12 @@ button {
 }
 
 @media (max-width: $container-width) {
+  .nav {
+    > li {
+      margin: 0 15px;
+    }
+  }
+
   ._container {
     padding-left: 10px;
     padding-right: 10px;
@@ -213,6 +281,11 @@ button {
 @media (max-width: 992px) {
   .block {
     padding: 50px 0;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .contact-form {
@@ -233,6 +306,19 @@ button {
 @media (max-width: 600px) {
   .title {
     font-size: 42px;
+  }
+
+  .nav {
+    flex-direction: column;
+    padding: 10px;
+    
+    > li {
+      margin: 0;
+    }
+
+    &__link {
+      padding: 10px 0;
+    }
   }
 
   .ticker {
