@@ -203,3 +203,51 @@ function unfoldItem(item) {
     item.classList.toggle('open');
   }
 }
+
+function openPopup(trigger) {
+  const popup = document.querySelector('#' + trigger.getAttribute("open"));
+  const popupBg = popup.querySelector('.popup__bg')
+  const popupCloseBtn = popup.querySelector('.popup__close-btn')
+
+  popup.style.display = 'block';
+  
+  if (popupBg) {
+    popupBg.onclick = () => {
+      closePopup(popup)
+    }
+  }
+  if (popupCloseBtn) {
+    popupCloseBtn.onclick = () => {
+      closePopup(popup)
+    }
+  }
+
+  function closePopup(popup) {
+    popup.style.display = 'none';
+  }
+  
+}
+
+Array.from(document.querySelectorAll('.popup-trigger')).forEach(trigger => {
+  if (trigger) {
+    trigger.onclick = () => {
+      openPopup(trigger);
+    }
+  }
+})
+
+function submitForm (form) {
+  const submitBtn = form.querySelector('.submit-btn .btn');
+  const successBlock = form.parentElement.querySelector('.success')
+
+  submitBtn.onclick = () => {
+    form.style.display = 'none';
+    successBlock.style.display = 'block';
+  }
+}
+
+Array.from(document.querySelectorAll('form')).forEach(form => {
+  if (form) {
+    submitForm(form)
+  }
+})

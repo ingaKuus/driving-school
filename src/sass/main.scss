@@ -136,6 +136,7 @@ button {
   transform: translate(-50%, -50%);
 }
 
+
 .ticker {
   font-size: 30px;
   font-weight: 700;
@@ -217,7 +218,7 @@ button {
 .contact-form {
   width: 480px;
   background-color: #f1f1f1;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   padding: 70px;
 
   &__title {
@@ -258,6 +259,15 @@ button {
     &.submit-btn {
       margin-top: 40px;
     }
+  }
+
+  &.success {
+    display: none;
+    text-align: center;
+  }
+  &.success &__icon {
+    font-size: 60px;
+    color: $accent-color_secondary;
   }
 }
 
@@ -321,6 +331,10 @@ button {
     }
   }
 
+  .phone-number {
+    text-align: center;
+  }
+
   .ticker {
     font-size: 16px;
     padding: 10px 0;
@@ -334,4 +348,5 @@ button {
 
 
 @import './ui.scss';
+@import './popups.scss';
 @import './block/*.scss';

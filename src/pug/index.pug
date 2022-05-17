@@ -12,7 +12,7 @@ block page
         .main-block__text
           h1.main-block__title.title Автошкола <br> в Санкт-петербурге
           p.main-block__subtitle.text-content Проходите обучение как вам удобно — в группе выходного дня, по вечерам или онлайн
-          a.main-block__btn.btn(href="#") Записаться
+          a.main-block__btn.btn.popup-trigger(href="#" open="contact-popup") Записаться
         .main-block__pic
           img(src="./img/bmw-3.png", alt="BMW-3")
       
@@ -121,6 +121,8 @@ block page
             .faq-block__slider-btn-next.slider__btn-next
 
     .map-block.block
+      .map-block__trigger.popup-trigger(open="entrance-popup")
+
 
     .contact-us-block.block
       .contact-us-block__content._container
@@ -129,7 +131,7 @@ block page
             .contact-us-block__pic.title-block__pic
               img(src="./img/kia-sportage.png", alt="KIA Sportage")
 
-        form(action="post").contact-us-block__form.contact-form
+        form.contact-us-block__form.contact-form
           h3.contact-form__title.title_small Оставьте свои контактные данные
           .contact-form__content
             .contact-form__field
@@ -142,7 +144,55 @@ block page
                 span Я согласен с 
                   a(href="#") политикой конфиденциальности
             .contact-form__field.submit-btn
-              button.btn(type="submit") Отправить заявку
+              .btn Отправить заявку
+        
+        .contact-us-block__form.contact-form.success
+          .contact-form__icon
+            <i class="fa-solid fa-circle-check"></i>
+          h3.contact-form__title.title_small Ваша заявка отправлена!
+          p.contact-form__text.text-content Специалисты свяжутся с вами в ближайшее время и помогут в оформлении записи
     
 
   include chunk/footer
+
+
+  .popups
+    .entrance-popup.popup.slider#entrance-popup
+      .popup__bg
+      .popup__close-btn
+        <i class="fa-solid fa-xmark"></i> 
+      .entrance-popup__content.popup__content
+        ul.entrance-popup__pics
+          li.slider__item
+            img._center(src="./img/entrance-1.jpg", alt="Вход")
+          li.slider__item
+            img._center(src="./img/entrance-2.jpg", alt="Вход")
+
+        .slider__btns
+          .slider__btn-prev
+          .slider__btn-next
+
+    .contact-popup.popup#contact-popup
+      .popup__bg
+      .popup__close-btn
+        <i class="fa-solid fa-xmark"></i> 
+      form.contact-form.popup__content
+        h3.contact-form__title.title_small Оставьте свои контактные данные
+        .contact-form__content
+          .contact-form__field
+            input(type="text" name="name" placeholder="Имя")
+          .contact-form__field
+            input(type="text" name="phone_number" placeholder="Телефон")
+          .contact-form__field.checkbox
+            label
+              input(type="checkbox" name="isAgree")
+              span Я согласен с 
+                a(href="#") политикой конфиденциальности
+          .contact-form__field.submit-btn
+            .btn Отправить заявку
+
+      .contact-form.success.popup__content
+        .contact-form__icon
+          <i class="fa-solid fa-circle-check"></i>
+        h3.contact-form__title.title_small Ваша заявка отправлена!
+        p.contact-form__text.text-content Специалисты свяжутся с вами в ближайшее время и помогут в оформлении записи

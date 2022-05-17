@@ -16,6 +16,10 @@
     bottom: -45px;
   }
 
+  &__form {
+    border-radius: 10px 10px 0 0;
+  }
+
   @media (max-width: 1200px) {
     padding-bottom: 0;
     &__title {

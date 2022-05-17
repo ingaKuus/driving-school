@@ -1,0 +1,9 @@
+.map-block {
+  &__trigger {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+}
