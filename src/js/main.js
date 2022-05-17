@@ -1,3 +1,36 @@
+
+// Кастомизация <select> с помощью библиотеки CustomSelect
+const customSelect = require("custom-select").default;
+Array.from(document.querySelectorAll('select')).forEach(select => {
+  if(select) {
+    customSelect(select);
+  }
+})
+
+Array.from(document.querySelectorAll('.custom-select-container')).forEach(select => {
+  if (select) {
+    openCustomSelect(select);
+  }
+})
+
+function openCustomSelect(select) {
+  const opener = select.querySelector('.custom-select-opener');
+  const panel = select.querySelector('.custom-select-panel');
+  const options = select.querySelectorAll('.custom-select-option')
+
+  Array.from(options).forEach(option => {
+    if (option) {
+      option.onclick = () => {
+        panel.classList.toggle('is-open')
+      }
+    }
+  })
+  opener.onclick = () => {
+    panel.classList.toggle('is-open');
+  }
+}
+
+
 // Бегущая строка
 Array.from(document.getElementsByClassName('ticker')).forEach(ticker => {
   startTicker(ticker, 5)
@@ -5,6 +38,32 @@ Array.from(document.getElementsByClassName('ticker')).forEach(ticker => {
     startTicker(ticker, 5, true);
   }
 })
+
+function startTicker(ticker, speed, isOnResize) {
+  const tickerLabelBlock = ticker.querySelector('.ticker__labels')
+  const tickerLabel = ticker.querySelector('.ticker__label');
+  tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));
+
+  const labelsMaxNum = window.innerWidth / tickerLabelW + 1;
+  const labelsCurNum = tickerLabelBlock.children.length;
+  if (labelsCurNum < labelsMaxNum) {
+    for (let i = 0; i <= labelsMaxNum - labelsCurNum; i++) {
+      const newLabel = tickerLabel.cloneNode(true);
+      tickerLabelBlock.appendChild(newLabel);
+    }
+  }
+
+  if (!isOnResize) {
+    let i = 0;
+    setInterval(() => {
+      if (i >= tickerLabelW) {
+        i = 0;
+      }
+      tickerLabelBlock.style.left = `-${i}px`;
+      i++;
+    }, 50/speed)
+  }
+}
 
 
 // Смена вкладки в блоке "Наши филиалы"
@@ -15,12 +74,47 @@ filialBlockAddresses.querySelectorAll('.tab').forEach(tab => {
   }
 });
 
+function changeTab(tab, parentBlock) {
+  if (tab.classList.contains('tab_active')) {
+    return;
+  }
+
+  const blockId = tab.getAttribute('openBlock');
+  const newBlock = document.getElementById(blockId);
+  const prevBlock = parentBlock.querySelector('.active');
+  const prevTab = parentBlock.querySelector('.tab_active');
+
+  console.log(prevBlock, prevTab);
+  newBlock.classList.add('active');
+  prevBlock.classList.remove('active');
+
+  tab.classList.add('tab_active')
+  prevTab.classList.remove('tab_active');
+}
+
 
 // Центрирование картинок в блоке
 window.onload = () => {
   Array.from(document.querySelectorAll('img._center')).forEach(img => {
     centerImg(img);
   })
+}
+
+function centerImg(img) {
+  let w = img.clientWidth;
+  let h = img.clientHeight;
+  const parent = img.parentElement.parentElement;
+  const parentW = parent.clientWidth
+  const parentH = parent.clientHeight
+
+
+  if (w/h > parentW/parentH) {
+    img.style.width = "auto";
+    img.style.height = "100%"
+  } else {
+    img.style.width = "100%";
+    img.style.height = "auto"
+  }
 }
 
 
@@ -66,74 +160,6 @@ Array.from(document.querySelectorAll('.slider')).forEach(slider => {
 
   moveSliderListener(slider, middleware);
 })
-
-Array.from(document.querySelectorAll('.unfold')).forEach(item => {
-  unfoldItem(item);
-})
-
-
-//-------------Functions
-
-function startTicker(ticker, speed, isOnResize) {
-  const tickerLabelBlock = ticker.querySelector('.ticker__labels')
-  const tickerLabel = ticker.querySelector('.ticker__label');
-  tickerLabelW = tickerLabel.clientWidth + Number(window.getComputedStyle(tickerLabel).getPropertyValue('margin-right').slice(0, -2));
-
-  const labelsMaxNum = window.innerWidth / tickerLabelW + 1;
-  const labelsCurNum = tickerLabelBlock.children.length;
-  if (labelsCurNum < labelsMaxNum) {
-    for (let i = 0; i <= labelsMaxNum - labelsCurNum; i++) {
-      const newLabel = tickerLabel.cloneNode(true);
-      tickerLabelBlock.appendChild(newLabel);
-    }
-  }
-
-  if (!isOnResize) {
-    let i = 0;
-    setInterval(() => {
-      if (i >= tickerLabelW) {
-        i = 0;
-      }
-      tickerLabelBlock.style.left = `-${i}px`;
-      i++;
-    }, 50/speed)
-  }
-}
-
-function changeTab(tab, parentBlock) {
-  if (tab.classList.contains('tab_active')) {
-    return;
-  }
-
-  const blockId = tab.getAttribute('openBlock');
-  const newBlock = document.getElementById(blockId);
-  const prevBlock = parentBlock.querySelector('.active');
-  const prevTab = parentBlock.querySelector('.tab_active');
-
-  console.log(prevBlock, prevTab);
-  newBlock.classList.add('active');
-  prevBlock.classList.remove('active');
-
-  tab.classList.add('tab_active')
-  prevTab.classList.remove('tab_active');
-}
-
-function centerImg(img) {
-  let w = img.clientWidth;
-  let h = img.clientHeight;
-  const parent = img.parentElement.parentElement;
-  const parentW = parent.clientWidth
-  const parentH = parent.clientHeight
-
-
-  if (w/h > parentW/parentH) {
-    img.style.width = "auto";
-    img.style.height = "100%"
-  } else {
-    img.style.width = "100%";
-    img.style.height = "auto"
-  }
-}
 
 function moveSliderListener(slider, middleware) {
   const prevBtn = slider.querySelector('.slider__btn-prev')
@@ -196,6 +222,12 @@ function moveSliderListener(slider, middleware) {
   }
 }
 
+
+// Раскрытие блока
+Array.from(document.querySelectorAll('.unfold')).forEach(item => {
+  unfoldItem(item);
+})
+
 function unfoldItem(item) {
   const btn = item.querySelector('.unfold__btn')
 
@@ -203,6 +235,16 @@ function unfoldItem(item) {
     item.classList.toggle('open');
   }
 }
+
+
+// Активация Popup
+Array.from(document.querySelectorAll('.popup-trigger')).forEach(trigger => {
+  if (trigger) {
+    trigger.onclick = () => {
+      openPopup(trigger);
+    }
+  }
+})
 
 function openPopup(trigger) {
   const popup = document.querySelector('#' + trigger.getAttribute("open"));
@@ -228,11 +270,12 @@ function openPopup(trigger) {
   
 }
 
-Array.from(document.querySelectorAll('.popup-trigger')).forEach(trigger => {
-  if (trigger) {
-    trigger.onclick = () => {
-      openPopup(trigger);
-    }
+
+
+// Отправка форм
+Array.from(document.querySelectorAll('form')).forEach(form => {
+  if (form) {
+    submitForm(form)
   }
 })
 
@@ -245,9 +288,3 @@ function submitForm (form) {
     successBlock.style.display = 'block';
   }
 }
-
-Array.from(document.querySelectorAll('form')).forEach(form => {
-  if (form) {
-    submitForm(form)
-  }
-})

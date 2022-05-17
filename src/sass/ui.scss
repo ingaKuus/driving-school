@@ -33,3 +33,67 @@
     }
   }
 }
+
+select {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden;
+}
+.custom-select {
+  &-container {
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: calc(19.36/16);
+  }
+  &-opener {
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+
+    &::before, &::after {
+      font-family: "Font Awesome 5 Free";
+      display: inline-block;
+      vertical-align: middle;
+      font-weight: 900;
+    }
+    &::before {
+      content: "\f3c5";
+      font-size: 20px;
+      color: $accent-color;
+      margin-right: 8px;
+    }
+    &::after {
+      content: "\f107";
+      color: $accent-color_secondary;
+      margin-left: 8px;
+    }
+  }
+  &-panel {
+    position: absolute;
+    top: 30px;
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    filter: drop-shadow(5px 10px 30px rgba(0, 0, 0, 0.1));
+    padding: 10px 20px;
+
+    &.is-open {
+      display: block;
+    }
+  }
+  &-option {
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 5px 0;
+
+    transition: color .2s ease;
+    &.has-focus, &:hover {
+      color: $accent-color_secondary;
+    }
+  }
+}
