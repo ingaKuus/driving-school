@@ -289,6 +289,11 @@ function submitForm (form) {
 
 
 // Смена вкладок через <select>
+Array.from(document.querySelectorAll('.select-tab')).forEach(selectTab => {
+  if (selectTab) {
+    selectChangeTab(selectTab);
+  }
+})
 
 function selectChangeTab(selectBlock) {
   const select = selectBlock.querySelector('select')
@@ -314,9 +319,3 @@ function selectChangeTab(selectBlock) {
     newActiveItem.classList.add('active');
   }
 }
-
-Array.from(document.querySelectorAll('.select-tab')).forEach(selectTab => {
-  if (selectTab) {
-    selectChangeTab(selectTab);
-  }
-})
