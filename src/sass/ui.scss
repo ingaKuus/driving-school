@@ -34,6 +34,7 @@
   }
 }
 
+// custom select
 select {
   position: absolute;
   z-index: -1;
@@ -75,6 +76,7 @@ select {
   }
   &-panel {
     position: absolute;
+    z-index: 100;
     top: 30px;
     display: none;
     background-color: #fff;

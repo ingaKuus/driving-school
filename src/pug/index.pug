@@ -121,8 +121,62 @@ block page
             .faq-block__slider-btn-next.slider__btn-next
 
     .map-block.block
-      .map-block__trigger.popup-trigger(open="entrance-popup")
+      .map-block__content._container
+        h2.map-block__title.title Как нас найти
 
+        .map-block__maps
+          .map-block__select.select-tab
+            select
+              option(value="Калининский") Калининский район
+              option(value="Невский")  Невский район
+              option(value="Выборгский")  Выборгский район
+              option(value="Приморский")  Приморский район
+          .map-block__map.map.select-item.active(val="Калининский")
+            .map__content
+              <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Acbddee728fec59bbc8a6366cd5bf1dfc002d14419365756f24d66ca779fb9b22&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            .map__info
+              h3.map__title Учебные классы
+              ul.map__items
+                li
+                  .map__address Пр.Культуры, д.31, к.1
+                  .map__schedule С 12:30 до 19:00 по будням
+                  .map__entrance-btn.popup-trigger(open="entrance-popup") План входа
+                li
+                  .map__address Ул.Ушинского, д.5, к.1
+                  .map__schedule С 12:30 до 19:00 по будням
+                  .map__entrance-btn.popup-trigger(open="entrance-popup") План входа
+
+          .map-block__map.select-item.map(val="Невский")
+            .map__content
+              <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A0b54d61c30dd0dbff735c9313b562a7706bc07d3c0b2d5d097d7ed010d5871ed&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            .map__info
+              h3.map__title Учебные классы
+              ul.map__items
+                li
+                  .map__address 2
+                  .map__schedule С 12:30 до 19:00 по будням
+                  .map__entrance-btn.popup-trigger(open="entrance-popup") План входа
+
+          .map-block__map.select-item.map(val="Выборгский")
+            .map__content
+              <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac63c5db3772275b7bc57bc49974c5972717afc75dcdc470ec9db66e4c8316380&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            .map__info
+              h3.map__title Учебные классы
+              ul.map__items
+                li
+                  .map__address 3
+                  .map__schedule С 12:30 до 19:00 по будням
+                  .map__entrance-btn.popup-trigger(open="entrance-popup") План входа
+          .map-block__map.select-item.map(val="Приморский")
+            .map__content
+              <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5da6247308e14b4e3c60a2f6afe0f3914689cd84cc457592327e93da17bc3602&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+            .map__info
+              h3.map__title Учебные классы
+              ul.map__items
+                li
+                  .map__address 4
+                  .map__schedule С 12:30 до 19:00 по будням
+                  .map__entrance-btn.popup-trigger(open="entrance-popup") План входа
 
     .contact-us-block.block
       .contact-us-block__content._container
@@ -152,47 +206,45 @@ block page
           h3.contact-form__title.title_small Ваша заявка отправлена!
           p.contact-form__text.text-content Специалисты свяжутся с вами в ближайшее время и помогут в оформлении записи
     
+    .popups
+      .entrance-popup.popup.slider#entrance-popup
+        .popup__bg
+        .popup__close-btn
+          <i class="fa-solid fa-xmark"></i> 
+        .entrance-popup__content.popup__content
+          ul.entrance-popup__pics
+            li.slider__item
+              img._center(src="./img/entrance-1.jpg", alt="Вход")
+            li.slider__item
+              img._center(src="./img/entrance-2.jpg", alt="Вход")
+
+          .slider__btns
+            .slider__btn-prev
+            .slider__btn-next
+
+      .contact-popup.popup#contact-popup
+        .popup__bg
+        .popup__close-btn
+          <i class="fa-solid fa-xmark"></i> 
+        form.contact-form.popup__content
+          h3.contact-form__title.title_small Оставьте свои контактные данные
+          .contact-form__content
+            .contact-form__field
+              input(type="text" name="name" placeholder="Имя")
+            .contact-form__field
+              input(type="text" name="phone_number" placeholder="Телефон")
+            .contact-form__field.checkbox
+              label
+                input(type="checkbox" name="isAgree")
+                span Я согласен с 
+                  a(href="#") политикой конфиденциальности
+            .contact-form__field.submit-btn
+              .btn Отправить заявку
+
+        .contact-form.success.popup__content
+          .contact-form__icon
+            <i class="fa-solid fa-circle-check"></i>
+          h3.contact-form__title.title_small Ваша заявка отправлена!
+          p.contact-form__text.text-content Специалисты свяжутся с вами в ближайшее время и помогут в оформлении записи
 
   include chunk/footer
-
-
-  .popups
-    .entrance-popup.popup.slider#entrance-popup
-      .popup__bg
-      .popup__close-btn
-        <i class="fa-solid fa-xmark"></i> 
-      .entrance-popup__content.popup__content
-        ul.entrance-popup__pics
-          li.slider__item
-            img._center(src="./img/entrance-1.jpg", alt="Вход")
-          li.slider__item
-            img._center(src="./img/entrance-2.jpg", alt="Вход")
-
-        .slider__btns
-          .slider__btn-prev
-          .slider__btn-next
-
-    .contact-popup.popup#contact-popup
-      .popup__bg
-      .popup__close-btn
-        <i class="fa-solid fa-xmark"></i> 
-      form.contact-form.popup__content
-        h3.contact-form__title.title_small Оставьте свои контактные данные
-        .contact-form__content
-          .contact-form__field
-            input(type="text" name="name" placeholder="Имя")
-          .contact-form__field
-            input(type="text" name="phone_number" placeholder="Телефон")
-          .contact-form__field.checkbox
-            label
-              input(type="checkbox" name="isAgree")
-              span Я согласен с 
-                a(href="#") политикой конфиденциальности
-          .contact-form__field.submit-btn
-            .btn Отправить заявку
-
-      .contact-form.success.popup__content
-        .contact-form__icon
-          <i class="fa-solid fa-circle-check"></i>
-        h3.contact-form__title.title_small Ваша заявка отправлена!
-        p.contact-form__text.text-content Специалисты свяжутся с вами в ближайшее время и помогут в оформлении записи

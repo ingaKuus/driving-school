@@ -84,7 +84,6 @@ function changeTab(tab, parentBlock) {
   const prevBlock = parentBlock.querySelector('.active');
   const prevTab = parentBlock.querySelector('.tab_active');
 
-  console.log(prevBlock, prevTab);
   newBlock.classList.add('active');
   prevBlock.classList.remove('active');
 
@@ -271,7 +270,6 @@ function openPopup(trigger) {
 }
 
 
-
 // Отправка форм
 Array.from(document.querySelectorAll('form')).forEach(form => {
   if (form) {
@@ -288,3 +286,37 @@ function submitForm (form) {
     successBlock.style.display = 'block';
   }
 }
+
+
+// Смена вкладок через <select>
+
+function selectChangeTab(selectBlock) {
+  const select = selectBlock.querySelector('select')
+  const selectOptions = selectBlock.querySelectorAll('.custom-select-option');
+  const items = selectBlock.parentElement.querySelectorAll('.select-item')
+
+  select.onchange = () => {
+    let activeItem = Array.from(items).find(item => item.classList.contains('active'));
+    if (!activeItem) {
+      items[0].classList.add('active')
+      activeItem = items[0];
+    }
+
+    const newItemVal = Array.from(selectOptions).find(option => option.classList.contains('is-selected')).getAttribute('data-value')
+    
+    const newActiveItem = Array.from(items).find(item => item.getAttribute('val') === newItemVal);
+
+    if(!newActiveItem) {
+      return
+    }
+
+    activeItem.classList.remove('active');
+    newActiveItem.classList.add('active');
+  }
+}
+
+Array.from(document.querySelectorAll('.select-tab')).forEach(selectTab => {
+  if (selectTab) {
+    selectChangeTab(selectTab);
+  }
+})
